@@ -1,18 +1,25 @@
 import MenuLogic
+import FreeSimpleGUI as sg
 def menu() -> None:
     """This function handles the menu and the responses"""
+    layout = [
+        [sg.Button("Add Item"), sg.Button("Edit Item")],
+        [sg.Button("Remove"), sg.Button("View")],
+        [sg.Button("Quit")],
+    ]
+    window = sg.Window("Oscar's To Do List", layout)
     while True:
-        print("Select an option from below:")
-        print("1. Add item to list\n2. Edit item on list\n3. Remove item from list\n4. View list\n5. Quit")
-    
-        response = int(input())
-        if response == 1:
-            MenuLogic.response_1()
-        if response == 2:
-            MenuLogic.response_2()
-        if response == 4:
-            MenuLogic.response_4()
-        if response == 5:
-            MenuLogic.response_5()
+        event, _values = window.read()
+        if event in (sg.WIN_CLOSED, "Quit"):
+            MenuLogic.response_5()  # save
             break
+        if event == "Add":
+            MenuLogic.response_1()
+        elif event == "Edit":
+            MenuLogic.response_2()
+        elif event == "Remove":
+            MenuLogic.response_3()
+        elif event == "View":
+            MenuLogic.response_4()
+    window.close()
         
