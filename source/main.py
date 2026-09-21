@@ -1,5 +1,7 @@
 import menu
+from Memory import populate
 def main():
+    populate()
     menu.menu()
 
 

@@ -1,4 +1,4 @@
-import task 
+import MenuLogic
 def menu() -> None:
     """This function handles the menu and the responses"""
     while True:
@@ -7,12 +7,12 @@ def menu() -> None:
     
         response = int(input())
         if response == 1:
-            name = input("Enter item name: ")
-            description = input("Enter item description: ")
-            name = task.Tasks(name, description)
+            MenuLogic.response_1()
+        if response == 2:
+            MenuLogic.response_2()
         if response == 4:
-            print('\n-----Oscars To Do List-----\n')
-            task.view_list()
+            MenuLogic.response_4()
         if response == 5:
+            MenuLogic.response_5()
             break
         
